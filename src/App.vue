@@ -1,18 +1,22 @@
 <template>
-  <div>
-    <ul v-for="product in products" :key="product.id">
-      <li>
-        <img :src="product.image" :alt="product.title" class="product-image" />
-        <h2>{{ product.title }}</h2>
-        <p>{{ product.description }}</p>
-        <p>{{ product.price }}</p>
-      </li>
-    </ul>
-  </div>
+  <ul v-for="product in products" :key="product.id">
+    <product-item
+      :image="product.image"
+      :title="product.title"
+      :price="product.price"
+      :description="product.description"
+    ></product-item>
+  </ul>
 </template>
 
 <script>
+import ProductItem from "./components/ProductItem.vue";
+
 export default {
+  components: {
+    ProductItem,
+  },
+
   data() {
     return {
       products: [
@@ -27,8 +31,7 @@ export default {
         },
         {
           id: "p2",
-          // image:
-          //   "https://upload.wikimedia.org/wikipedia/commons/6/6d/Gongga_Snow_Mountain_Cloud_On_Foot_Mountaineer.jpg",
+
           image:
             "https://upload.wikimedia.org/wikipedia/commons/e/e6/Wall_tent_in_the_snow_elk_mountain_tents.jpg",
           title: "Mountain Tent",
@@ -64,19 +67,9 @@ body {
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
+  margin: 2rem auto;
   padding: 0;
-}
-
-li {
-  margin: 20px 0;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
-img.product-image {
-  width: 640px;
-  height: 426px;
-  object-fit: cover;
+  max-width: 40rem;
 }
 </style>
