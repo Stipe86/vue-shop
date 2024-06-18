@@ -1,20 +1,19 @@
 <template>
-  <ul v-for="product in products" :key="product.id">
-    <product-item
-      :image="product.image"
-      :title="product.title"
-      :price="product.price"
-      :description="product.description"
-    ></product-item>
-  </ul>
+  <products-list></products-list>
 </template>
 
 <script>
-import ProductItem from "./components/ProductItem.vue";
+import ProductsList from "./components/ProductsList.vue";
 
 export default {
   components: {
-    ProductItem,
+    ProductsList,
+  },
+
+  provide() {
+    return {
+      products: this.products,
+    };
   },
 
   data() {
@@ -64,12 +63,5 @@ html {
 
 body {
   margin: 0;
-}
-
-ul {
-  list-style: none;
-  margin: 2rem auto;
-  padding: 0;
-  max-width: 40rem;
 }
 </style>
