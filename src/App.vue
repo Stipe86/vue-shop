@@ -1,15 +1,13 @@
 <template>
   <the-header></the-header>
-  <products-list></products-list>
+  <router-view></router-view>
 </template>
 
 <script>
-import ProductsList from "./components/ProductsList.vue";
 import TheHeader from "./components/TheHeader.vue";
 
 export default {
   components: {
-    ProductsList,
     TheHeader,
   },
 

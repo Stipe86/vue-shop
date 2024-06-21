@@ -1,10 +1,16 @@
 <template>
   <header>
-    <h1>VueShop</h1>
+    <h1>
+      <router-link to="/">VueShop</router-link>
+    </h1>
     <nav>
       <ul>
-        <li>Products</li>
-        <li>Cart</li>
+        <li>
+          <router-link to="/products">Products</router-link>
+        </li>
+        <li>
+          <router-link to="/cart">Cart</router-link>
+        </li>
       </ul>
     </nav>
     <div>
@@ -33,6 +39,21 @@ ul {
 
 li {
   margin: 0 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.25rem;
+}
+
+a:hover,
+a:active,
+a.router-link-active {
+  color: #45006d;
+  border-color: #45006d;
 }
 
 button {
