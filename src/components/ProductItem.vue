@@ -10,6 +10,9 @@
         <p>{{ description }}</p>
       </div>
     </div>
+    <div class="product__actions">
+      <button>Add to Cart</button>
+    </div>
   </li>
 </template>
 
@@ -46,5 +49,25 @@ li {
 
 .product__text h4 {
   margin: 0;
+}
+
+.product__actions {
+  text-align: center;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #45006d;
+  color: white;
+  border: 1px solid #45006d;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+}
+
+button:hover,
+button:active {
+  background-color: #760ab4;
+  border-color: #760ab4;
 }
 </style>
