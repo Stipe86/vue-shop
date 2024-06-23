@@ -15,6 +15,7 @@ export default {
     return {
       products: this.products,
       addProductToCart: this.addProductToCart,
+      cart: this.cart,
     };
   },
 
