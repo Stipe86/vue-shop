@@ -14,6 +14,7 @@ export default {
   provide() {
     return {
       products: this.products,
+      addProductToCart: this.addProductToCart,
     };
   },
 
@@ -48,7 +49,23 @@ export default {
           price: 6.99,
         },
       ],
+      cart: { items: [], quantity: 0 },
     };
+  },
+  methods: {
+    addProductToCart(id) {
+      // const selectedProduct = this.products.filter(
+      //   (product) => product.id === id
+      // );
+      // console.log(selectedProduct);
+
+      const selectedProduct = this.products.find(
+        (product) => product.id === id
+      );
+
+      this.cart.items.push(selectedProduct);
+      this.cart.items.forEach((element) => console.log(element));
+    },
   },
 };
 </script>

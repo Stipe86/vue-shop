@@ -11,14 +11,21 @@
       </div>
     </div>
     <div class="product__actions">
-      <button>Add to Cart</button>
+      <button @click="addProduct">Add to Cart</button>
     </div>
   </li>
 </template>
 
 <script>
 export default {
+  inject: ["addProductToCart"],
   props: ["id", "image", "title", "price", "description"],
+
+  methods: {
+    addProduct() {
+      this.addProductToCart(this.id);
+    },
+  },
 };
 </script>
 
