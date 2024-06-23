@@ -23,7 +23,12 @@ export default {
 
   methods: {
     addProduct() {
-      this.addProductToCart(this.id);
+      this.addProductToCart({
+        id: this.id,
+        image: this.image,
+        title: this.title,
+        price: this.price,
+      });
     },
   },
 };

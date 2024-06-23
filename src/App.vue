@@ -49,21 +49,34 @@ export default {
           price: 6.99,
         },
       ],
-      cart: { items: [], quantity: 0 },
+      cart: { items: [], quantity: 0, total: 0 },
     };
   },
   methods: {
-    addProductToCart(id) {
-      // const selectedProduct = this.products.filter(
-      //   (product) => product.id === id
-      // );
-      // console.log(selectedProduct);
+    addProductToCart(selectedProductData) {
+      const indexNotFoundInArrayReturnedValue = -1;
 
-      const selectedProduct = this.products.find(
-        (product) => product.id === id
+      const indexOfTheProductInCartArray = this.cart.items.findIndex(
+        (product) => product.id === selectedProductData.id
       );
 
-      this.cart.items.push(selectedProduct);
+      if (indexOfTheProductInCartArray === indexNotFoundInArrayReturnedValue) {
+        const newItem = {
+          id: selectedProductData.id,
+          image: selectedProductData.image,
+          title: selectedProductData.title,
+          price: selectedProductData.price,
+          quantity: 1,
+        };
+
+        this.cart.items.push(newItem);
+      } else {
+        this.cart.items[indexOfTheProductInCartArray].quantity++;
+      }
+
+      this.cart.quantity++;
+      this.cart.total += selectedProductData.price;
+
       this.cart.items.forEach((element) => console.log(element));
     },
   },
