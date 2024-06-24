@@ -10,6 +10,7 @@
         </li>
         <li>
           <router-link to="/cart">Cart</router-link>
+          <span class="cart__counter">{{ cart.quantity }}</span>
         </li>
       </ul>
     </nav>
@@ -18,6 +19,12 @@
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  inject: ["cart"],
+};
+</script>
 
 <style scoped>
 header {
@@ -69,5 +76,13 @@ button {
 button:hover,
 button:active {
   background-color: #f0d5ff;
+}
+
+.cart__counter {
+  padding: 0.15rem 1.25rem;
+  background-color: #45006d;
+  color: white;
+  margin: 0 0.75rem;
+  border-radius: 30px;
 }
 </style>
