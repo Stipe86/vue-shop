@@ -15,6 +15,7 @@ export default {
     return {
       products: this.products,
       addProductToCart: this.addProductToCart,
+      removeProductFromCart: this.removeProductFromCart,
       cart: this.cart,
     };
   },
@@ -79,6 +80,27 @@ export default {
       this.cart.total += selectedProductData.price;
 
       this.cart.items.forEach((element) => console.log(element));
+    },
+
+    removeProductFromCart(productId) {
+      const productFromCartIndex = this.cart.items.findIndex(
+        (product) => product.id === productId
+      );
+
+      const productData = this.cart.items[productFromCartIndex];
+
+      this.cart.total -= productData.price * productData.quantity;
+      this.cart.quantity -= productData.quantity;
+      this.cart.items.splice(productFromCartIndex, 1);
+
+      // this.cart.items = this.cart.items.filter(
+      //   (product) => product.id !== productData.id
+      // );
+      // this.cart.total -= (
+      //   this.cart.items.item.price * this.cart.items.item.quantity
+      // ).toFixed(2);
+      // this.cart.quantity -= this.cart.items.item.quantity;
+      // this.cart.items.item.id.quantity = 0;
     },
   },
 };
