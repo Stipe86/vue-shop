@@ -13,8 +13,8 @@
           Quantity: <strong>{{ quantity }}</strong>
         </div>
       </div>
-      <div class="item__total">Total: ${{ (price * quantity).toFixed(2) }}</div>
-      <button @click="removeProduct(id)">Remove</button>
+      <div class="item__total">Total: ${{ itemTotal }}</div>
+      <button @click="removeProduct">Remove</button>
     </div>
   </li>
 </template>
@@ -25,8 +25,14 @@ export default {
   props: ["id", "title", "image", "price", "quantity"],
 
   methods: {
-    removeProduct(productId) {
-      this.removeProductFromCart(productId);
+    removeProduct() {
+      this.removeProductFromCart(this.id);
+    },
+  },
+
+  computed: {
+    itemTotal() {
+      return (this.price * this.quantity).toFixed(2);
     },
   },
 };

@@ -1,29 +1,7 @@
 <template>
   <section>
     <h2>Your Cart</h2>
-    <h3>Total Amount: ${{ cart.total.toFixed(2) }}</h3>
-    <!-- <ul>
-      <li v-for="item in cart.items" :key="item.id">
-        <div>
-          <img :src="item.image" :alt="item.title" />
-        </div>
-        <div>
-          <h3>{{ item.title }}</h3>
-          <div class="item__data">
-            <div>
-              Price per Item: <strong>${{ item.price }}</strong>
-            </div>
-            <div>
-              Quantity: <strong>{{ item.quantity }}</strong>
-            </div>
-          </div>
-          <div class="item__total">
-            Total: ${{ (item.price * item.quantity).toFixed(2) }}
-          </div>
-          <button @click="removeProduct(item.id)">Remove</button>
-        </div>
-      </li>
-    </ul> -->
+    <h3>Total Amount: ${{ cartTotal }}</h3>
 
     <ul>
       <cart-item
@@ -47,11 +25,11 @@ export default {
   },
   inject: ["cart"],
 
-  // methods: {
-  //   removeProduct(productId) {
-  //     this.removeProductFromCart(productId);
-  //   },
-  // },
+  computed: {
+    cartTotal() {
+      return this.cart.total.toFixed(2);
+    },
+  },
 };
 </script>
 
