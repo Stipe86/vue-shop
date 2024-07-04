@@ -2,7 +2,7 @@
   <section>
     <h2>Your Cart</h2>
     <h3>Total Amount: ${{ cart.total.toFixed(2) }}</h3>
-    <ul>
+    <!-- <ul>
       <li v-for="item in cart.items" :key="item.id">
         <div>
           <img :src="item.image" :alt="item.title" />
@@ -23,20 +23,35 @@
           <button @click="removeProduct(item.id)">Remove</button>
         </div>
       </li>
+    </ul> -->
+
+    <ul>
+      <cart-item
+        v-for="item in cart.items"
+        :key="item.id"
+        :id="item.id"
+        :title="item.title"
+        :image="item.image"
+        :price="item.price"
+        :quantity="item.quantity"
+      ></cart-item>
     </ul>
   </section>
 </template>
 
 <script>
+import CartItem from "../components/CartItem.vue";
 export default {
-  inject: ["cart", "removeProductFromCart"],
-  props: ["id", "title", "image", "price", "quantity"],
-
-  methods: {
-    removeProduct(productId) {
-      this.removeProductFromCart(productId);
-    },
+  components: {
+    CartItem,
   },
+  inject: ["cart"],
+
+  // methods: {
+  //   removeProduct(productId) {
+  //     this.removeProductFromCart(productId);
+  //   },
+  // },
 };
 </script>
 
@@ -61,49 +76,5 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-li {
-  margin: 1rem auto;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  text-align: center;
-  max-width: 25rem;
-}
-
-img {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.item__data {
-  display: flex;
-  justify-content: space-between;
-}
-
-.item__total {
-  font-weight: bold;
-  margin: 1rem 0;
-  border-top: 1px solid #474747;
-  border-bottom: 2px solid #474747;
-  padding: 0.25rem 0;
-  width: auto;
-}
-button {
-  font: inherit;
-  background-color: #8f0030;
-  border: 1px solid #8f0030;
-  color: white;
-  border-radius: 30px;
-  cursor: pointer;
-  padding: 0.5rem 1.5rem;
-}
-
-button:hover,
-button:active {
-  background-color: #53001c;
-  border-color: #53001c;
 }
 </style>
