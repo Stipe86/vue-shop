@@ -21,18 +21,12 @@
 
 <script>
 export default {
-  // inject: ["removeProductFromCart"],
   props: ["id", "title", "image", "price", "quantity"],
 
-  // methods: {
-  //   removeProduct() {
-  //     this.removeProductFromCart(this.id);
-  //   },
-  // },
 
   methods: {
     removeProduct() {
-      this.$store.dispatch("cart/removeProductFromCart", this.id);
+      this.$store.dispatch("cart/removeProductFromCart", { productId: this.id });
     },
   },
 

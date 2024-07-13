@@ -22,7 +22,6 @@
 
 <script>
 export default {
-  // inject: ["cart"],
   computed: {
     cartQuantity() {
       return this.$store.getters["cart/quantity"];

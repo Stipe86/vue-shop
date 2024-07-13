@@ -46,8 +46,9 @@ export default {
     },
 
     removeProductFromCart(state, payload) {
+      const productId = payload.productId;
       const productFromCartIndex = state.items.findIndex(
-        (product) => product.id === payload
+        (product) => product.id === productId
       );
 
       const productData = state.items[productFromCartIndex];
@@ -60,7 +61,10 @@ export default {
 
   actions: {
     addProductToCart(context, payload) {
-      context.commit("addProductToCart", payload);
+      const productId = payload.id;
+      const products = context.rootGetters["products/products"];
+      const product = products.find((product) => product.id === productId);
+      context.commit("addProductToCart", product);
     },
 
     removeProductFromCart(context, payload) {

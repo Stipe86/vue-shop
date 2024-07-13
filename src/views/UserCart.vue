@@ -23,13 +23,6 @@ export default {
   components: {
     CartItem,
   },
-  // inject: ["cart"],
-
-  // computed: {
-  //   cartTotal() {
-  //     return this.cart.total.toFixed(2);
-  //   },
-  // },
 
   computed: {
     cartItems() {
