@@ -10,7 +10,7 @@
         </li>
         <li>
           <router-link to="/cart">Cart</router-link>
-          <span class="cart__counter">{{ cart.quantity }}</span>
+          <span class="cart__counter">{{ cartQuantity }}</span>
         </li>
       </ul>
     </nav>
@@ -22,7 +22,12 @@
 
 <script>
 export default {
-  inject: ["cart"],
+  // inject: ["cart"],
+  computed: {
+    cartQuantity() {
+      return this.$store.getters["cart/quantity"];
+    },
+  },
 };
 </script>
 
