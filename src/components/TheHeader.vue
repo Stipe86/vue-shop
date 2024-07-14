@@ -15,7 +15,8 @@
       </ul>
     </nav>
     <div>
-      <button>Login</button>
+      <button v-if="!isLoggedIn" @click="login">Login</button>
+      <button v-else @click="logout">Logout</button>
     </div>
   </header>
 </template>
@@ -25,6 +26,18 @@ export default {
   computed: {
     cartQuantity() {
       return this.$store.getters["cart/quantity"];
+    },
+    isLoggedIn() {
+      return this.$store.getters.userIsAuthenticated;
+    },
+  },
+
+  methods: {
+    login() {
+      this.$store.dispatch("login");
+    },
+    logout() {
+      this.$store.dispatch("logout");
     },
   },
 };
