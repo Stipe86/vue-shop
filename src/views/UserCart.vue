@@ -1,7 +1,9 @@
 <template>
   <section>
     <h2>Your Cart</h2>
-    <h3>Total Amount: ${{ cartTotal }}</h3>
+    <h3>
+      Total Amount: <base-badge mode="elegant">${{ cartTotal }}</base-badge>
+    </h3>
 
     <ul>
       <cart-item

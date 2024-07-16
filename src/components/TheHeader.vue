@@ -10,7 +10,8 @@
         </li>
         <li>
           <router-link to="/cart">Cart</router-link>
-          <span class="cart__counter">{{ cartQuantity }}</span>
+          <base-badge mode="elegant">{{ cartQuantity }}</base-badge>
+          <!-- <span class="cart__counter">{{ cartQuantity }}</span> -->
         </li>
         <li v-if="isLoggedIn">
           <router-link to="/admin">Shop Admin</router-link>
@@ -98,11 +99,11 @@ button:active {
   background-color: #f0d5ff;
 }
 
-.cart__counter {
+/* .cart__counter {
   padding: 0.15rem 1.25rem;
   background-color: #45006d;
   color: white;
   margin: 0 0.75rem;
   border-radius: 30px;
-}
+} */
 </style>

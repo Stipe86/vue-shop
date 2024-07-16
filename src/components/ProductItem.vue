@@ -6,7 +6,10 @@
       </div>
       <div class="product__text">
         <h3>{{ title }}</h3>
-        <h4>${{ price }}</h4>
+        <base-badge mode="highlight" :no-margin-left="true"
+          ><h4>${{ price }}</h4></base-badge
+        >
+
         <p>{{ description }}</p>
       </div>
     </div>
@@ -21,7 +24,6 @@ export default {
   props: ["id", "image", "title", "price", "description"],
 
   methods: {
-
     addProduct() {
       this.$store.dispatch("cart/addProductToCart", {
         id: this.id,
