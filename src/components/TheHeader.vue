@@ -14,13 +14,13 @@
           <!-- <span class="cart__counter">{{ cartQuantity }}</span> -->
         </li>
         <li v-if="isLoggedIn">
-          <router-link to="/admin">Shop Admin</router-link>
+          <router-link to="/admin">Admin</router-link>
         </li>
       </ul>
     </nav>
     <div>
       <button v-if="!isLoggedIn" @click="login">Login</button>
-      <button v-else @click="logout">Logout</button>
+      <button v-else @click="logoutAndRedirect">Logout</button>
     </div>
   </header>
 </template>
@@ -40,8 +40,9 @@ export default {
     login() {
       this.$store.dispatch("login");
     },
-    logout() {
+    logoutAndRedirect() {
       this.$store.dispatch("logout");
+      this.$router.push("/products");
     },
   },
 };
