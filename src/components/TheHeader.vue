@@ -12,6 +12,9 @@
           <router-link to="/cart">Cart</router-link>
           <span class="cart__counter">{{ cartQuantity }}</span>
         </li>
+        <li v-if="isLoggedIn">
+          <router-link to="/admin">Shop Admin</router-link>
+        </li>
       </ul>
     </nav>
     <div>
